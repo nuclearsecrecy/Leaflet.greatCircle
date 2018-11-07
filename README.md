@@ -56,7 +56,7 @@ function init() {
 		autoPan: true 
 	}).addTo(map);
 
-	var radius = 10000000; //1000 km 
+	var radius = 10000000; //10,000 km 
 	//initialize the greatCircle object
 	gc = new L.greatCircle(marker.getLatLng(), {
 		radius: radius,
