@@ -24,8 +24,10 @@ Note that has all of the same options as a Polygon or Circle object (depending o
 
 In most cases you can just use this the same way as Leaflet's [Circle class](https://leafletjs.com/reference-1.3.4.html#circle), e.g.:
 
-:L.greatCircle([50.5, 30.5], {radius: 200});
-:L.greatCircle.addTo(map);
+```
+L.greatCircle([50.5, 30.5], {radius: 200});
+L.greatCircle.addTo(map);
+```
 
 The first parameter is a latlng (either a Leaflet latLng object, or an array of lat,lng), the second parameter is an object of options.
 
