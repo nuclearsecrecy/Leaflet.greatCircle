@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>Leaflet.greatCircle.js example</title>
+<style>
+
+#map {
+	position: absolute;
+	left: 0px; top: 0px; bottom: 0px; right: 0px;
+}
+
+#settings {
+	font-family: Arial;
+	font-size: 10pt;
+	background-color: rgba(200,200,200,.5);	
+	position: absolute;
+	padding: 20px;
+	width: 260px;
+	top: 0px; right: 0px;
+	z-index: 1000;
+}
+
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+<script src="../LeafLet.greatCircle.js"></script>
+
+<script>
+var map;
+var marker;
+var gc;
+
+function init() {
+
+	//load leaflet map 
+	map = L.map('map', {
+		center: [21,5.7],
+		zoom: 1,
+		worldCopyJump: true //this is necessary for the wrapping effect to work
+	})
+
+	//load OpenStreetMap map tiles
+	var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+		osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+		osm = L.tileLayer(osmUrl, {attribution: osmAttrib, });
+	osm.addTo(map);
+
+	//create the marker
+	marker = new L.marker(map.getCenter(),{
+		draggable: true,
+		autoPan: true 
+	}).addTo(map);
+	
+	//initialize the circle object
+	gc = new L.greatCircle(marker.getLatLng(), {
+		radius: parseInt(document.getElementById("radius").value)*1000,
+	});
+	gc.addTo(map); //add to map
+	gc.bindTo(marker); //bind to marker
+	
+}
+
+//just a little function to update the circle and caption
+function changeSettings() {
+	var newrad = parseInt(document.getElementById("radius").value);
+	gc.setRadius(newrad*1000);
+	document.getElementById("radiuskm").innerHTML = (Math.round(newrad)+" km");
+}
+
+window.onload = init;
+</script>
+</head>
+<body>
+<div id="map"></div>
+<div id="settings">Radius: <input type="range" min="100" max="20000" value="6000" class="slider" id="radius" oninput="changeSettings();"> <span id="radiuskm">6000 km</span></div>
+</body>
