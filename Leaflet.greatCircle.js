@@ -10,7 +10,7 @@ L.GreatCircle = L.Circle.extend({
 	initialize: function (position, options = {}) {
 		//default options
 		var defaults = {
-			clipLat: 80, //lat (+/-) used to determine when regular circles might be used. set to false to force render of circle as polygon (no matter what), or true to render it as a normal circle (no matter what)
+			clipLat: 65, //lat (+/-) used to determine when regular circles might be used. set to false to force render of circle as polygon (no matter what), or true to render it as a normal circle (no matter what)
 			clipRad: 2000000, //radius (m) at which it will always render a polygon, unless clipLat == true. 
 			degStep: 0.5, //degrees by which the circle drawing function will step for each polygon -- smaller is more refined. 
 			maxCopies: -1, //set a maximum number of copies if elements are wrapped -- -1 is no max. 

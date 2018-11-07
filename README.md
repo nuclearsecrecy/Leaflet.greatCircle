@@ -78,7 +78,7 @@ that has a latitude that is <=-65, or >=65, will be rendered as a Polygon. Other
 class detects that definite clipping has occurred (e.g., the circle has "broken"), it will render as a Polygon with this setting.
 This is not a fool-proof method, though, since there can be considerable distortion even at lesser latitudes (even 0) if the radius
 is large enough, and without the circle "breaking." If instead 'true' (Boolean) is passed in this parameter, it will *always* render
-as a Circle object. If 'false' is passed, it will *always* render as a Polygon. Defaults to 'false.'
+as a Circle object. If 'false' is passed, it will *always* render as a Polygon. Defaults to '65.'
 
 **clipRad** _Number_
 
