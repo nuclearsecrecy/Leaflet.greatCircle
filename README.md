@@ -33,7 +33,7 @@ The first parameter is a latlng (either a Leaflet latLng object, or an array of 
 
 ## Example
 
-See the example page for a full example, but here is a basic real-life usage with both a greatCircle and a bound Marker:
+See the **[example page](https://nuclearsecrecy.github.io/Leaflet.greatCircle/example/)** for a full demo, but here is a basic real-life usage with both a greatCircle and a bound Marker:
 
 ```
 function init() {
