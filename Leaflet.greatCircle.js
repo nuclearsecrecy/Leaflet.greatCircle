@@ -188,10 +188,10 @@ L.GreatCircle = L.Circle.extend({
 		//l1 and l2 are the top of the circle, l3 and l4 are the bottom.
 		//In a closed circle, l1==l2 and l3==l4. In a clipped circle, one or both of these
 		//conditions will not be true. Rounding used to deal with precision errors.
-		var l1 = this._destination_from_bearing(lat,lng,0,this._options.radius*this._m2km, 3);
-		var l2 = this._destination_from_bearing(lat,lng,360,this._options.radius*this._m2km, 3);			
-		var l3 = this._destination_from_bearing(lat,lng,180,this._options.radius*this._m2km, 3);
-		var l4 = this._destination_from_bearing(lat,lng,-180,this._options.radius*this._m2km, 3);
+		var l1 = this._destination_from_bearing(lat,lng,0,this._options.radius*this._m2km, 2);
+		var l2 = this._destination_from_bearing(lat,lng,360,this._options.radius*this._m2km, 2);
+		var l3 = this._destination_from_bearing(lat,lng,180,this._options.radius*this._m2km, 2);
+		var l4 = this._destination_from_bearing(lat,lng,-180,this._options.radius*this._m2km, 2);
 		
 		//now check for the 4 possible clipping conditions
 		if( (l1[0]!=l2[0]||l1[1]!=l2[1]) && (l3[0]!=l4[0]||l3[1]!=l4[1]) ) {
